@@ -1,0 +1,115 @@
+body {
+    font-family: Patrick Hand;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative; 
+}
+
+.index-page {
+    background-image: url(../images/welcomepage_background.png);
+}
+
+.form-page {
+    background-image: url(../images/formpage_background.png);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.thankyou-page {
+    background-image: url(../images/thankyoupage_background.png);
+}
+
+.invisible-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    height: 35vh;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+}
+
+.user-form {
+    width: 400px;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.user-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.user-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #335F55;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: border-radius 0.4s ease, border-color 0.4s ease;
+}
+
+.user-form button:hover {
+    background-color: #284b43;
+    border-radius: 15px;
+    
+}
+
+
+
+
+
+.snowfall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    color: white;
+    opacity: 0.8;
+    pointer-events: none;
+    user-select: none;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+/* Animacja spadającego śniegu */
+@keyframes snowfall {
+    0% {
+        transform: translateY(-100px);  /* Zaczynają się na górze */
+    }
+    100% {
+        transform: translateY(100vh);  /* Spadają na dół */
+    }
+}
