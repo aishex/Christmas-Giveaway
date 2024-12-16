@@ -81,10 +81,6 @@ body {
     
 }
 
-
-
-
-
 .snowfall {
     position: absolute;
     top: 0;
@@ -104,12 +100,11 @@ body {
     font-weight: bold;
 }
 
-/* Animacja spadającego śniegu */
 @keyframes snowfall {
     0% {
-        transform: translateY(-100px);  /* Zaczynają się na górze */
+        transform: translateY(-100px);
     }
     100% {
-        transform: translateY(100vh);  /* Spadają na dół */
+        transform: translateY(100vh);
     }
 }
