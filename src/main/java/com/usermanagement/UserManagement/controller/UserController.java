@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.usermanagement.UserManagement.model.Address;
+import com.usermanagement.UserManagement.model.Role;
 import com.usermanagement.UserManagement.model.User;
+import com.usermanagement.UserManagement.repository.AddressRepository;
+import com.usermanagement.UserManagement.repository.RoleRepository;
 import com.usermanagement.UserManagement.repository.UserRepository;
 
 @RestController
@@ -22,6 +26,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
     
     @GetMapping("")
     public List<User> getAllUsers() {
@@ -30,9 +40,32 @@ public class UserController {
 
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+public User createUser(@RequestBody User user) {
+
+    System.out.println("Otrzymano użytkownika: " + user);
+
+    if (user.getRole() != null && user.getRole().getId() != null) {
+        Role role = roleRepository.findById(user.getRole().getId())
+            .orElseThrow(() -> new RuntimeException("Role not found with id: " + user.getRole().getId()));
+        user.setRole(role);
+    } else {
+        user.setRole(null);
     }
+
+    if (user.getAddress() != null && user.getAddress().getId() != null) {
+        Address address = addressRepository.findById(user.getAddress().getId())
+            .orElseThrow(() -> new RuntimeException("Address not found with id: " + user.getAddress().getId()));
+        user.setAddress(address);
+    } else {
+        user.setAddress(null);
+    }
+
+    System.out.println("Zapisz użytkownika: " + user);
+    return userRepository.save(user);
+}
+
+    
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {

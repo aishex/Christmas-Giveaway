@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +27,15 @@ public class User {
     private String email;
 
     private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = true)
+    private Role role;
+    
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable = true)
+    private Address address;
+    
     
 
     public Long getId() {
@@ -65,5 +76,21 @@ public class User {
     
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
