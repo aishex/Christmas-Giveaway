@@ -6,7 +6,7 @@
 - **User Registration** - allows adding users with personal information (name, surname, email, age) and assigning roles and addresses.
 - **User Management** - the ability to edit, delete, and view the list of users.
 - **Roles and Addresses** - users can have different roles and addresses assigned.
-- **Swagger UI** - interactive API documentation available at http://localhost:8080/swagger-ui/index.html.
+- **Swagger UI** - interactive API documentation.
 
 
 ## Technologies
